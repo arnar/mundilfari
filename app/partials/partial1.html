@@ -1,0 +1,28 @@
+<input type="text" ng-model="newEntry.minutes" />
+<input type="text" ng-model="newEntry.project" />
+<input type="hidden" tags="{tokenSeparators: [',', ' ']}" 
+  tagsource="tagLoader" ng-model="newEntry.tags" style="width: 300px;"/>
+<input type="text" ng-model="newEntry.description" />
+<button ng-click="logNewEntry()" class="btn btn-primary">Log'em!</button>
+
+<br>
+{{ newEntry }}
+
+<hr>
+
+<table cellspacing="0">
+  <tr>
+    <td>Date</td>
+    <td>Project</td>
+    <td>Description</td>
+    <td>Tags</td>
+    <td>Hours</td>
+  </tr>
+  <tr ng-repeat='entry in latestEntries'>
+    <td>{{ entry.date | momentCalendar }}</td>
+    <td>{{ entry.project }}</td>
+    <td>{{ entry.description }}</td>
+    <td><span ng-repeat="tag in entry.tags" class="badge">{{ tag }}</span></td>
+    <td>{{ entry.hours }}</td>
+  </tr>
+</table>
